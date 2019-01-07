@@ -6,6 +6,29 @@ class Books extends Component {
     books: PropTypes.array.isRequired
   };
 
+  // Select shelf automatically
+  selectShelf = shelf => {
+    const shelves = [
+      { value: "currentlyReading", string: "Currently Reading" },
+      { value: "wantToRead", string: "Want to Read" },
+      { value: "read", string: "Read" },
+      { value: "none", string: "None" }
+    ];
+
+    return (
+      <select value={shelf} onChange={() => {}}>
+        <option value="move" disabled>
+          Move to...
+        </option>
+        {shelves.map(shelfOption => (
+          <option value={shelfOption.value} key={shelfOption.value}>
+            {shelfOption.string}
+          </option>
+        ))}
+      </select>
+    );
+  };
+
   render() {
     return (
       <ol className="books-grid">
@@ -22,15 +45,7 @@ class Books extends Component {
                   }}
                 />
                 <div className="book-shelf-changer">
-                  <select>
-                    <option value="move" disabled>
-                      Move to...
-                    </option>
-                    <option value="currentlyReading">Currently Reading</option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
-                    <option value="none">None</option>
-                  </select>
+                  {this.selectShelf(book.shelf)}
                 </div>
               </div>
               <div className="book-title">{book.title}</div>
