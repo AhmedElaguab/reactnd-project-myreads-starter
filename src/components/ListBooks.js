@@ -5,7 +5,8 @@ import Books from "./Books";
 
 class ListBooks extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    onShelfSelected: PropTypes.func.isRequired
   };
 
   getShelfBooks = shelf => {
@@ -24,19 +25,28 @@ class ListBooks extends Component {
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
-                <Books books={this.getShelfBooks("currentlyReading")} />
+                <Books
+                  books={this.getShelfBooks("currentlyReading")}
+                  onShelfSelected={this.props.onShelfSelected}
+                />
               </div>
             </div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
-                <Books books={this.getShelfBooks("wantToRead")} />
+                <Books
+                  books={this.getShelfBooks("wantToRead")}
+                  onShelfSelected={this.props.onShelfSelected}
+                />
               </div>
             </div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
-                <Books books={this.getShelfBooks("read")} />
+                <Books
+                  books={this.getShelfBooks("read")}
+                  onShelfSelected={this.props.onShelfSelected}
+                />
               </div>
             </div>
           </div>

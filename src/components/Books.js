@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 
 class Books extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    onShelfSelected: PropTypes.func
   };
 
   // Select shelf automatically
-  selectShelf = shelf => {
+  selectShelf = book => {
     const shelves = [
       { value: "currentlyReading", string: "Currently Reading" },
       { value: "wantToRead", string: "Want to Read" },
@@ -16,7 +17,10 @@ class Books extends Component {
     ];
 
     return (
-      <select value={shelf} onChange={() => {}}>
+      <select
+        value={book.shelf}
+        onChange={event => this.props.onShelfSelected(event.target.value, book)}
+      >
         <option value="move" disabled>
           Move to...
         </option>
@@ -45,7 +49,7 @@ class Books extends Component {
                   }}
                 />
                 <div className="book-shelf-changer">
-                  {this.selectShelf(book.shelf)}
+                  {this.selectShelf(book)}
                 </div>
               </div>
               <div className="book-title">{book.title}</div>

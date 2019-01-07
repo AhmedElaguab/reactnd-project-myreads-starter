@@ -10,13 +10,28 @@ class BooksApp extends React.Component {
     books: []
   };
 
+  hundleShelfSelected = (shelf, book) => {
+    const books = this.state.books.filter(b => b !== book);
+    const selectedBook = book;
+    selectedBook.shelf = shelf;
+    books.push(selectedBook);
+
+    this.setState({ books });
+    BooksAPI.update(book, shelf);
+  };
+
   render() {
     return (
       <div className="app">
         <Route
           path="/"
           exact
-          render={() => <ListBooks books={this.state.books} />}
+          render={() => (
+            <ListBooks
+              books={this.state.books}
+              onShelfSelected={this.hundleShelfSelected}
+            />
+          )}
         />
         <Route path="/search" render={() => <SearchBooks />} />
       </div>
