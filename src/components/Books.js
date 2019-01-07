@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Books extends Component {
-  componentDidMount() {
-    console.log(this.props.books);
-  }
+  static propTypes = {
+    books: PropTypes.array.isRequired
+  };
+
   render() {
     return (
       <ol className="books-grid">
