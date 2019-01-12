@@ -7,32 +7,6 @@ class Books extends Component {
     onShelfSelected: PropTypes.func
   };
 
-  // // Select shelf automatically
-  // selectShelf = book => {
-  //   const shelves = [
-  //     { value: "currentlyReading", string: "Currently Reading" },
-  //     { value: "wantToRead", string: "Want to Read" },
-  //     { value: "read", string: "Read" },
-  //     { value: "none", string: "None" }
-  //   ];
-
-  //   return (
-  //     <select
-  //       value={book.shelf}
-  //       onChange={event => this.props.onShelfSelected(event.target.value, book)}
-  //     >
-  //       <option value="move" disabled>
-  //         Move to...
-  //       </option>
-  //       {shelves.map(shelfOption => (
-  //         <option value={shelfOption.value} key={shelfOption.value}>
-  //           {shelfOption.string}
-  //         </option>
-  //       ))}
-  //     </select>
-  //   );
-  // };
-
   render() {
     return (
       <ol className="books-grid">
