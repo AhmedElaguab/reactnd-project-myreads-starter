@@ -17,9 +17,13 @@ class SearchBooks extends Component {
   };
 
   hundleSearch = () => {
-    BooksAPI.search(this.state.query).then(searchResultBooks => {
-      this.setState({ searchResultBooks });
-    });
+    if (this.state.query) {
+      BooksAPI.search(this.state.query).then(searchResultBooks => {
+        this.setState({ searchResultBooks });
+      });
+    } else {
+      this.setState({ searchResultBooks: [] });
+    }
   };
 
   render() {
