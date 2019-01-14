@@ -13,6 +13,10 @@ class Books extends Component {
         {this.props.books.length > 0 ? (
           this.props.books.map(book => {
             const shelf = book.shelf ? book.shelf : "none";
+            const smallThumbnail =
+              book.imageLinks && book.imageLinks.smallThumbnail
+                ? book.imageLinks.smallThumbnail
+                : "";
             return (
               <li key={book.id}>
                 <div className="book">
@@ -22,9 +26,7 @@ class Books extends Component {
                       style={{
                         width: 128,
                         height: 193,
-                        backgroundImage: `url(${
-                          book.imageLinks.smallThumbnail
-                        })`
+                        backgroundImage: `url(${smallThumbnail})`
                       }}
                     />
                     <div className="book-shelf-changer">
