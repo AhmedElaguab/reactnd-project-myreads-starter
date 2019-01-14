@@ -7,6 +7,7 @@ class SearchBooks extends Component {
   };
 
   hundleInputChange = query => {
+    query = query.trimStart();
     this.setState({ query });
   };
 
