@@ -33,7 +33,12 @@ class BooksApp extends React.Component {
             />
           )}
         />
-        <Route path="/search" render={() => <SearchBooks />} />
+        <Route
+          path="/search"
+          render={() => (
+            <SearchBooks onShelfSelected={this.hundleShelfSelected} />
+          )}
+        />
       </div>
     );
   }

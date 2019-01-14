@@ -54,7 +54,10 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <Books books={this.state.searchResultBooks} />
+          <Books
+            books={this.state.searchResultBooks}
+            onShelfSelected={this.props.onShelfSelected}
+          />
         </div>
       </div>
     );
