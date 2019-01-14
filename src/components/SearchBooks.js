@@ -1,14 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import * as BooksAPI from "../BooksAPI";
+import Books from "./Books";
 
 class SearchBooks extends Component {
   state = {
-    query: ""
+    query: "",
+    searchResultBooks: []
   };
 
   hundleInputChange = query => {
     query = query.trimStart();
-    this.setState({ query });
+    this.setState({ query }, () => {
+      this.hundleSearch();
+    });
+  };
+
+  hundleSearch = () => {
+    BooksAPI.search(this.state.query).then(searchResultBooks => {
+      this.setState({ searchResultBooks });
+    });
   };
 
   render() {
@@ -35,7 +46,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid" />
+          <Books books={this.state.searchResultBooks} />
         </div>
       </div>
     );
