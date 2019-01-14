@@ -24,24 +24,23 @@ class Books extends Component {
                     }}
                   />
                   <div className="book-shelf-changer">
-                    {book.shelf && (
-                      <select
-                        value={book.shelf}
-                        onChange={event =>
-                          this.props.onShelfSelected(event.target.value, book)
-                        }
-                      >
-                        <option value="move" disabled>
-                          Move to...
-                        </option>
-                        <option value="currentlyReading">
-                          Currently Reading
-                        </option>
-                        <option value="wantToRead">Want to Read</option>
-                        <option value="read">Read</option>
-                        <option value="none">None</option>
-                      </select>
-                    )}
+                    <select
+                      value={book.shelf}
+                      defaultValue="none"
+                      onChange={event =>
+                        this.props.onShelfSelected(event.target.value, book)
+                      }
+                    >
+                      <option value="move" disabled>
+                        Move to...
+                      </option>
+                      <option value="currentlyReading">
+                        Currently Reading
+                      </option>
+                      <option value="wantToRead">Want to Read</option>
+                      <option value="read">Read</option>
+                      <option value="none">None</option>
+                    </select>
                   </div>
                 </div>
                 <div className="book-title">{book.title}</div>
