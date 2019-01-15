@@ -11,7 +11,7 @@ class BooksApp extends React.Component {
   };
 
   hundleShelfSelected = (shelf, book) => {
-    const books = this.state.books.filter(b => b !== book);
+    const books = this.state.books.filter(b => b.id !== book.id);
     const selectedBook = book;
     selectedBook.shelf = shelf;
     books.push(selectedBook);
