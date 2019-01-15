@@ -29,30 +29,6 @@ li {
   margin-left: auto;
 }
 
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 70%;
-  }
-}
-
 .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -209,7 +185,7 @@ button:active {
 .books-grid li {
   padding: 0.8rem;
   text-align: left;
-  width: 33.33%;
+  width: 100%;
 }
 
 .book {
@@ -315,4 +291,43 @@ button:active {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+/* Responsive */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .books-grid li {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 70%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 70%;
+  }
+
+  .books-grid li {
+    width: 33.333%;
+  }
 }
