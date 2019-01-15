@@ -18,12 +18,14 @@ class ListBooks extends Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
-          <h1>MyReads</h1>
+          <div className="container">
+            <h1>MyReads</h1>
+          </div>
         </div>
         <div className="list-books-content">
-          <div>
+          <div className="container">
             <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
+              <h2 className="bookshelf-title current">Currently Reading</h2>
               <div className="bookshelf-books">
                 <Books
                   books={this.getShelfBooks("currentlyReading")}
@@ -32,7 +34,7 @@ class ListBooks extends Component {
               </div>
             </div>
             <div className="bookshelf">
-              <h2 className="bookshelf-title">Want to Read</h2>
+              <h2 className="bookshelf-title want">Want to Read</h2>
               <div className="bookshelf-books">
                 <Books
                   books={this.getShelfBooks("wantToRead")}
@@ -41,7 +43,7 @@ class ListBooks extends Component {
               </div>
             </div>
             <div className="bookshelf">
-              <h2 className="bookshelf-title">Read</h2>
+              <h2 className="bookshelf-title read">Read</h2>
               <div className="bookshelf-books">
                 <Books
                   books={this.getShelfBooks("read")}

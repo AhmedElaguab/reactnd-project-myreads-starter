@@ -20,7 +20,7 @@ class Books extends Component {
             return (
               <li key={book.id}>
                 <div className="book">
-                  <div className="book-top">
+                  <div className="book-thumb">
                     <div
                       className="book-cover"
                       style={{
@@ -48,13 +48,35 @@ class Books extends Component {
                       </select>
                     </div>
                   </div>
-                  <div className="book-title">{book.title}</div>
-                  <div className="book-authors">
-                    {book.authors ? (
-                      book.authors.map(author => <p key={author}>{author}</p>)
-                    ) : (
-                      <p>Unknown author</p>
-                    )}
+                  <div className="book-details">
+                    <h2
+                      className="book-title"
+                      title={book.subtitle ? book.subtitle : ""}
+                    >
+                      {book.title}
+                    </h2>
+                    <p>
+                      <span>{book.publishedDate}</span> |{" "}
+                      <span>{book.pageCount} pages</span>
+                    </p>
+                    <ul className="book-authors">
+                      {book.authors ? (
+                        book.authors.map(author => (
+                          <li key={author}>{author}</li>
+                        ))
+                      ) : (
+                        <li>Unknown author</li>
+                      )}
+                    </ul>
+                    <ul className="book-categories">
+                      {book.categories ? (
+                        book.categories.map(categorie => (
+                          <li key={categorie}>{categorie}</li>
+                        ))
+                      ) : (
+                        <li>Unknown categories</li>
+                      )}
+                    </ul>
                   </div>
                 </div>
               </li>

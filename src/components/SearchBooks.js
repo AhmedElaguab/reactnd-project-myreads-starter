@@ -47,22 +47,28 @@ class SearchBooks extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <Link to="/" className="close-search">
-            Close
-          </Link>
-          <div className="search-books-input-wrapper">
-            <input
-              onChange={e => this.hundleInputChange(e.target.value)}
-              type="text"
-              placeholder="Search by title or author"
-            />
+          <div className="container">
+            <div className="search-books-bar-inner">
+              <Link to="/" className="close-search">
+                Close
+              </Link>
+              <div className="search-books-input-wrapper">
+                <input
+                  onChange={e => this.hundleInputChange(e.target.value)}
+                  type="text"
+                  placeholder="Search by title or author"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div className="search-books-results">
-          <Books
-            books={this.state.searchResultBooks}
-            onShelfSelected={this.props.onShelfSelected}
-          />
+          <div className="container">
+            <Books
+              books={this.state.searchResultBooks}
+              onShelfSelected={this.props.onShelfSelected}
+            />
+          </div>
         </div>
       </div>
     );
