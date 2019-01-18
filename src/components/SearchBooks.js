@@ -27,12 +27,13 @@ class SearchBooks extends Component {
       BooksAPI.search(this.state.query).then(searchResultBooks => {
         if (Array.isArray(searchResultBooks) && searchResultBooks.length > 0) {
           this.state.books.forEach(booksBook => {
-            searchResultBooks.forEach(searchResultBook => {
-              if (booksBook.id === searchResultBook.id) {
-                const idx = searchResultBooks.indexOf(searchResultBook);
-                searchResultBooks.splice(idx, 1, booksBook);
-              }
-            });
+            const commonBook = searchResultBooks.find(
+              b => b.id === booksBook.id
+            );
+            if (commonBook) {
+              const idx = searchResultBooks.indexOf(commonBook);
+              searchResultBooks.splice(idx, 1, booksBook);
+            }
           });
         }
 
