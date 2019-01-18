@@ -15,6 +15,11 @@ class ListBooks extends Component {
   };
 
   render() {
+    const shelves = [
+      { title: "Currently Reading", slug: "currentlyReading" },
+      { title: "Want To Read", slug: "wantToRead" },
+      { title: "Read", slug: "read" }
+    ];
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -24,33 +29,19 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div className="container">
-            <div className="bookshelf">
-              <h2 className="bookshelf-title current">Currently Reading</h2>
-              <div className="bookshelf-books">
-                <Books
-                  books={this.getShelfBooks("currentlyReading")}
-                  onShelfSelected={this.props.onShelfSelected}
-                />
+            {shelves.map(shelf => (
+              <div className="bookshelf" key={shelf.slug}>
+                <h2 className={"bookshelf-title " + shelf.slug}>
+                  {shelf.title}
+                </h2>
+                <div className="bookshelf-books">
+                  <Books
+                    books={this.getShelfBooks(shelf.slug)}
+                    onShelfSelected={this.props.onShelfSelected}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title want">Want to Read</h2>
-              <div className="bookshelf-books">
-                <Books
-                  books={this.getShelfBooks("wantToRead")}
-                  onShelfSelected={this.props.onShelfSelected}
-                />
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title read">Read</h2>
-              <div className="bookshelf-books">
-                <Books
-                  books={this.getShelfBooks("read")}
-                  onShelfSelected={this.props.onShelfSelected}
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className="open-search">
